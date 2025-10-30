@@ -1,0 +1,16 @@
+import time
+from config import retry_delay
+
+def connect_to_plc(plc_obj, ip_address, rack_num, slot_num):
+    while True:
+        try:
+            print("Попытка подключения к ПЛК...")
+            plc_obj.connect(ip_address, rack_num, slot_num)
+            if plc_obj.get_connected():
+                print("Подключение к ПЛК успешно установлено.")
+                return True
+        except Exception as e:
+            print(f"Ошибка подключения: {e}")
+
+        print(f"Повторная попытка подключения через 5 секунд...")
+        time.sleep(retry_delay)

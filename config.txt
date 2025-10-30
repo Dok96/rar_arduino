@@ -1,0 +1,82 @@
+#==[report]==
+
+# ===готовые отчёты:===
+dist_report_pdf = C:\Users\SCC\PycharmProjects\Protocol RAR\reportCpmplate\pdf
+dist_report_xlsx = C:\Users\SCC\Desktop\rarTemplate\complate
+
+# === отчёт общий===
+
+# шаблон для общего отчёта
+# текущий путь отчёт
+curr_report = C:\Users\SCC\Desktop\rarTemplate\complate\complate.xlsx
+#блан пустой
+blank_report  = C:\Users\SCC\Desktop\rarTemplate\template\TemplateReport.xlsx
+
+# ====отчёт Lump====
+#шаблон (для подмены)
+dist_template_Lump_report = C:\Users\SCC\Desktop\rarTemplate\template\LumpTemplate.xlsx
+#отчёт (текущий отчёт по дефектам Lump)
+dist_lump_report= C:\Users\SCC\Desktop\rarTemplate\lump_report\LumpReport.xlsx
+
+#==PLC==
+plc_ip = 192.168.117.128
+rack = 0
+slot = 2
+
+
+#повторное подключение
+retry_delay = 5
+MAX_retry_delay = 100
+
+#== блок данных отчёта
+#номер блока
+db_number = 300
+
+# триггер
+trig_address = 1218
+trig_size = 1
+
+#время старта и завершения
+start_h = 1200
+start_m = 1202
+start_s = 1204
+stop_h = 1206
+stop_m = 1208
+stop_s = 1210
+time_dSize = 2
+
+# количество событий
+n_summ_message = 1220
+n_message_size = 2
+
+# размещения тега длины !!!!!!!!!! #добавить длину в плк
+
+len_prod_offset
+
+offset_len = 0
+
+# размещение тега триггера
+offset_trigger = 4
+
+
+# время опроса тегов (секунды)
+time_tag =0.2
+
+#== Разрешение ==
+#на печать
+en_print= 1
+# на создание отчёта
+en_gen_report=1
+
+# =1 для включение печати если сумма сообщение alarm больше 0, если 0 тогда печать даже пустых протоколов
+en_summ_message = 1
+
+
+
+
+
+
+
+
+
+
