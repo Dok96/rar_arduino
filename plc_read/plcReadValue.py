@@ -1,7 +1,7 @@
 import snap7
 from config import  db_number, start_h, start_m, start_s, stop_h, stop_m, stop_s, time_dSize, len_prod_offset, len_prod_size
 
-def read_time_plc(plc):
+def read_plc(plc):
     try:
 
         # Чтение времени начала

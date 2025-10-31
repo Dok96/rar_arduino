@@ -49,9 +49,8 @@ time_dSize = 2
 n_summ_message = 1220
 n_message_size = 2
 
-# размещения тега длины !!!!!!!!!! #добавить длину в плк
-
-len_prod_offset
+# размещения тега длины
+len_prod_offset = 1222
 
 offset_len = 0
 

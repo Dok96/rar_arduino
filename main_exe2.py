@@ -3,7 +3,7 @@ import threading
 import snap7
 from config import plc_ip, rack, slot, retry_delay, en_print, en_gen_report ,en_summ_message
 from plc_read.readTrigger import read_trigger_def  # читаем триггер о формировании отчёта
-from plc_read.plcReadTime import read_time_plc  # читаем время для отчёта
+from plc_read.plcReadValue import read_plc  # читаем время для отчёта
 from plc_read.plcResetTrigger import res_trigger  # сбрасываем триггер о формировании отчёта
 from report.copyTemplateReport import copy_file_with_replace
 from plc_read.readMessage import read_summ_message
@@ -12,7 +12,8 @@ from report.saveReportPdfXlsx_2 import save_report_to_files, get_pdf_path
 from report.reportAlarm import report_alarm
 from print.print_def_2 import print_file
 from plc_connection.plc_conect import connect_to_plc
-from plc_connection.ping import ping_plc
+from plc_connection.check_connect import  ensure_plc_connection
+
 import logging
 
 # Глобальная переменная для завершения программы
@@ -49,22 +50,8 @@ if __name__ == "__main__":
         # Основной цикл работы программы
         while not exit_flag:
             try:
-                # Проверяем доступность PLC с помощью ping
-                if not ping_plc(plc_ip):
-                    print(f"PLC недоступен по адресу {plc_ip}. Повторная попытка через {retry_delay} секунд...")
-                    logger.error(f"PLC недоступен по адресу {plc_ip}. Повторная попытка через {retry_delay} секунд...")
-                    if plc and plc.get_connected():
-                        plc.disconnect()
-                        print("Соединение с PLC закрыто из-за отсутствия ping.")
-                        logger.error("Соединение с PLC закрыто из-за отсутствия ping.")
-                    time.sleep(retry_delay)
-                    continue
-
-                # Подключаемся к PLC, если соединение не установлено
-                if not plc.get_connected():
-                    print("Соединение с PLC потеряно. Пытаемся переподключиться... ")
-                    logger.error("Соединение с PLC потеряно. Пытаемся переподключиться...")
-                    connect_to_plc(plc, plc_ip, rack, slot)
+                # Убедимся, что PLC доступен и подключён
+                if not ensure_plc_connection(plc):
                     continue
 
                 # Читаем триггер
@@ -82,7 +69,7 @@ if __name__ == "__main__":
                     logger.info(f'Количество сообщений: {summ_message}')
 
                     # Вызываем функцию чтения времени и получаем значения
-                    time_start, time_stop, len_product = read_time_plc(plc)  # Передаём объект PLC
+                    time_start, time_stop, len_product = read_plc(plc)  # Передаём объект PLC
 
                     # Проверяем, что значения не равны None
                     if time_start and time_stop:
@@ -143,7 +130,7 @@ if __name__ == "__main__":
                     logger.error(f"Ошибка при работе с ПЛК: {e}",exc_info=True )
 
                 # Проверяем доступность PLC через ping
-                while not ping_plc(plc_ip):
+                while not ensure_plc_connection(plc_ip):
                     print(f"PLC недоступен по адресу {plc_ip}. Повторная попытка через {retry_delay} секунд...")
                     logger.info(f"PLC недоступен по адресу {plc_ip}. Повторная попытка через {retry_delay} секунд...")
                     time.sleep(retry_delay)
