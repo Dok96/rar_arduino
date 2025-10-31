@@ -8,7 +8,7 @@ from plc_read.plcResetTrigger import res_trigger  # сбрасываем три�
 from report.copyTemplateReport import copy_file_with_replace
 from plc_read.readMessage import read_summ_message
 from report.reportHead import rep_head
-from report.saveReportPdfXlsx_2 import save_report_to_files, get_pdf_path
+from report.saveReportPdfXlsx import save_report_to_files, get_pdf_path
 from report.reportAlarm import report_alarm
 from print.print_def_2 import print_file
 from plc_connection.plc_conect import connect_to_plc
@@ -70,6 +70,9 @@ if __name__ == "__main__":
 
                     # Вызываем функцию чтения времени и получаем значения
                     time_start, time_stop, len_product = read_plc(plc)  # Передаём объект PLC
+                    print(f'time_start:{time_start} \n'
+                           f'time_stop:{time_stop}\n'
+                          f"len_product:{len_product}")
 
                     # Проверяем, что значения не равны None
                     if time_start and time_stop:

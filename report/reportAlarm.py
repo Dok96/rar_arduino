@@ -26,12 +26,13 @@ def report_alarm(plc, number_of_message):
 
 
             # Читаем длину (4 байта)
-            read_lenght_byte = plc.db_read(db_number, y + 2, 4)  # Смещение: i * 6 + 2 (4 байта для status_lenght)
-            if not read_lenght_byte:
+            read_len_byte = plc.db_read(db_number, y + 2, 4)  # Смещение: i * 6 + 2 (4 байта для status_lenght)
+            if not read_len_byte:
                 print(f"Не удалось прочитать status_lenght для сообщения {y + 1}")
                 continue
             # Преобразование массива байтов в float
-            status_lenght = struct.unpack('>f', read_lenght_byte)[0]  # '>f' означает big-endian float
+            status_len = struct.unpack('>i', read_len_byte)[0]  # '>f' означает big-endian float
+            #status_len = round(status_len,1)
 
             # читаем сообщения Hour
             read_word_hour = plc.db_read(db_number, y+6, 2)  # читаем сразу два байта
@@ -75,7 +76,7 @@ def report_alarm(plc, number_of_message):
 
             ws[f"B{18 + i}"] = f"{rep_fault}" # rep_fault # ячейка Б (Событие)
 
-            ws[f"D{18 + i}"] =status_lenght # ячейка Д (Длина)
+            ws[f"D{18 + i}"] =status_len # ячейка Д (Длина)
 
             ws[f"E{18 + i}"] = f'{status_hour:02}:{status_minute:02}:{status_second:02}'
 

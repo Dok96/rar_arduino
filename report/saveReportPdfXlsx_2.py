@@ -1,6 +1,6 @@
 
 from openpyxl import load_workbook
-from config import destination_report, destinationXl, destinationPDF
+from config import curr_report, dist_report_xlsx, dist_report_pdf
 import os
 from datetime import datetime
 import win32com.client
@@ -50,9 +50,9 @@ def grant_read_access_to_everyone(file_path):
 
 def save_report_to_files(record):
     global global_output_file_pdf
-    template_path = destination_report
-    base_output_path_xlsx = destinationXl
-    base_output_path_pdf = destinationPDF
+    template_path = curr_report
+    base_output_path_xlsx = dist_report_xlsx
+    base_output_path_pdf = dist_report_pdf
 
     try:
         now = datetime.now()

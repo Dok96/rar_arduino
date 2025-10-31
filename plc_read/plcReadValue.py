@@ -31,6 +31,7 @@ def read_plc(plc):
         #читаем производственную длину
         len_buffer=plc.db_read(db_number, len_prod_offset, len_prod_size)
         len_product =  snap7.util.get_real(len_buffer, 0) # Преобразуем 4 байта в float
+        len_product = round(len_product,2)
 
 
         return time_start, time_stop, len_product  # Возвращаем значения

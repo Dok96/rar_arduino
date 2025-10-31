@@ -4,8 +4,8 @@ from config import blank_report,curr_report
 
 # копирование шоблона
 def copy_file_with_replace():
-    source_path = curr_report
-    destination_path=blank_report
+    source_path =  blank_report
+    destination_path=curr_report
 
 
     """

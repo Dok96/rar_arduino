@@ -1,8 +1,8 @@
 #==[report]==
 
 # ===готовые отчёты:===
-dist_report_pdf = C:\Users\SCC\PycharmProjects\Protocol RAR\reportCpmplate\pdf
-dist_report_xlsx = C:\Users\SCC\Desktop\rarTemplate\complate
+dist_report_pdf = C:\Users\SCC\Desktop\rarTemplate\reportCpmplate\pdf
+dist_report_xlsx = C:\Users\SCC\Desktop\rarTemplate\reportCpmplate\xlsx
 
 # === отчёт общий===
 
@@ -12,14 +12,8 @@ curr_report = C:\Users\SCC\Desktop\rarTemplate\complate\complate.xlsx
 #блан пустой
 blank_report  = C:\Users\SCC\Desktop\rarTemplate\template\TemplateReport.xlsx
 
-# ====отчёт Lump====
-#шаблон (для подмены)
-dist_template_Lump_report = C:\Users\SCC\Desktop\rarTemplate\template\LumpTemplate.xlsx
-#отчёт (текущий отчёт по дефектам Lump)
-dist_lump_report= C:\Users\SCC\Desktop\rarTemplate\lump_report\LumpReport.xlsx
-
 #==PLC==
-plc_ip = 192.168.117.128
+plc_ip = 192.168.1.188
 rack = 0
 slot = 2
 
@@ -30,7 +24,7 @@ MAX_retry_delay = 100
 
 #== блок данных отчёта
 #номер блока
-db_number = 300
+db_number = 301
 
 # триггер
 trig_address = 1218
@@ -51,7 +45,6 @@ n_message_size = 2
 
 # размещения тега длины
 len_prod_offset = 1222
-
 offset_len = 0
 
 # размещение тега триггера

@@ -4,7 +4,7 @@ import os
 import re  # Для обработки лишних пробелов
 
 
-def rep_head( rep_time_start, rep_time_stop,  rep_product_len):
+def rep_head( rep_time_start, rep_time_stop,  rep_product_len ):
     try:
         # Открываем шаблон Excel
         wb = load_workbook(curr_report)
@@ -30,7 +30,6 @@ def rep_head( rep_time_start, rep_time_stop,  rep_product_len):
 
         ws["C9"] = f"{rep_time_start}"  # Время начала
         ws["C13"] = f"{rep_product_len}"  #производственная длина
-        ws["C3"] = f"{rep_data}"  # Дата
         ws["C11"] = f"{rep_time_stop}"  # Время окончания
 
 
