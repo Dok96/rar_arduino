@@ -1,4 +1,4 @@
-import os
+#config.py
 
 def load_config(file_path):
     """
@@ -27,8 +27,8 @@ def load_config(file_path):
                         value = float(value)
 
                         # Если значение является путем, заменяем обратные слеши на прямые
-                    if key in ["dist_report_pdf", "dist_report_xlsx","template_report",
-                        "blank_report","template_Lump_report", "lump_report",
+                    if key in ["dist_report_pdf", "dist_report_xlsx","curr_report",
+                        "blank_report",
                                 "", "", "", ""]:
                         value = value.replace("\\", "/")
 
